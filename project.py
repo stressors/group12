@@ -27,7 +27,7 @@ def set_video_background(video_path: str):
 
     html = """
         <style>
-        .video-bg {
+        .video-bg {{
             position: fixed;
             right: 0;
             bottom: 0;
@@ -37,10 +37,10 @@ def set_video_background(video_path: str):
             height: auto;
             z-index: -1;
             object-fit: cover;
-        }
-        .stApp {
+        }}
+        .stApp {{
             background: transparent !important;
-        }
+        }}
         </style>
         <video class="video-bg" autoplay muted loop playsinline>
             <source src="{video_data_url}" type="video/mp4">
@@ -51,8 +51,6 @@ def set_video_background(video_path: str):
 set_video_background("assets/background.mp4")
 
 # ----- Initialize Session State -----
-if "theme_mode" not in st.session_state:
-    st.session_state["theme_mode"] = "light"
 if "language" not in st.session_state:
     st.session_state["language"] = "id"
 if "original_img" not in st.session_state:
@@ -148,11 +146,13 @@ translations = {
         "bright_contrast": "Bayangan",
         "bright_result": "Hasil Cahaya/Bayangan",
         "team_title": "### 👥 Orang Kelompok",
-        "team_subtitle": "Kelompok 5 – Orang dan Tugas",
-        "team_sid": "**ID:**",
-        "team_role": "**Tugas:**",
-        "team_contribution": "Bantuan:",
-        "team_group": "**Kelompok:**",
+        "team_subtitle": "Kelompok 12 – Orang dan Tugas",
+        "team_sid": "ID",
+        "team_role": "Tugas",
+        "team_contribution": "Kontribusi:",
+        "upload_method_title": "### Cara Penguploadan",
+        "upload_method_text": "Untuk menggunakan aplikasi ini, klik tombol 'Tambah foto' dan pilih file gambar PNG, JPG, atau JPEG dari perangkat Anda. Gambar akan ditampilkan setelah diupload.",
+        "team_group": "Kelompok",
         "axis_x": "Garis-X",
         "axis_y": "Garis-Y",
         "axis_diag": "Silang",
@@ -242,51 +242,140 @@ translations = {
         "bright_contrast": "Shade",
         "bright_result": "Light/Shade Outcome",
         "team_title": "### 👥 Group People",
-        "team_subtitle": "Group 5 – People and Jobs",
-        "team_sid": "**ID:**",
-        "team_role": "**Job:**",
-        "team_group": "**Group:**",
-        "team_contribution": "Help:",
+        "team_subtitle": "Group 12 – People and Jobs",
+        "team_sid": "ID",
+        "team_role": "Job",
+        "team_group": "Group",
+        "team_contribution": "Contribution:",
         "axis_x": "X-line",
         "axis_y": "Y-line",
         "axis_diag": "Cross",
         "dark_mode": "Night Style",
         "light_mode": "Day Style",
+    },
+    "zh": {
+        "title": "🧮 图像处理中的矩阵变换",
+        "subtitle": "🎯 实时探索二维矩阵变化和图片调整",
+        "app_goal": "🎯 **目标：** 通过线性代数理念展示二维矩阵变化和图片调整如何影响视觉效果的动手探索。",
+        "features": "- ↩️ 变化：移动、调整大小、旋转、倾斜、翻转\n- 🧽 调整：平滑、聚焦、轮廓检测、背景清除、转为单色、调整光线和阴影",
+        "concept_1_title": "### 🌀 二维矩阵变化",
+        "concept_1_text1": "平面图像是一组点 \\((x, y)\\)，通过直线动作如移动、调整大小、旋转、倾斜和翻转来移动，由2×2或3×3矩阵表示（均匀点）。",
+        "concept_1_text2": "在点位置使用这些矩阵会移动它们：调整大小改变比例，旋转围绕中间旋转视图，倾斜使其倾斜，翻转在选定线上反转视图。",
+        "concept_2_title": "### 📊 图片调整（混合）",
+        "concept_2_text1": "调整使用一个小网格（混合矩阵），在图像上滑动；在每个点，它通过添加网格乘以附近点来制作新的点值。",
+        "concept_2_text2": "具有均匀好数字的网格使视图更柔和或模糊，而具有大好中间和坏侧面的网格使其更锐利并突出边缘。",
+        "concept_3_title": "### 🎲 为什么动手？",
+        "concept_3_text1": "该应用是动手式的，因为用户可以调整设置（如转动度数、大小率、倾斜强度、用于平滑或聚焦的网格种类等），并立即在视图上看到变化。✨",
+        "concept_3_text2": "它将网格或矩阵设置链接到可见效果，使直线变化和混合等思想更容易自然理解。",
+        "quick_concepts": "#### 📝 关键理念",
+        "quick_concepts_text": "- ↩️ 二维变化：移动点位置（移动、调整大小、旋转、倾斜、翻转）。\n- 📊 混合：一个小网格在图像上滑动以制作新的点值。",
+        "upload_title": "### 📷 添加图片",
+        "upload_label": "在此处添加图片（PNG/JPG/JPEG）📂",
+        "upload_success": "✅ 图片添加成功！",
+        "upload_preview": "📷 起始图片视图",
+        "upload_info": "⬆️ 请先添加图片以使用下面的工具。",
+        "tools_title": "### 🔧 图片编辑工具",
+        "tools_subtitle": "🎛️ 选择下面的框以打开变化或调整设置。",
+        "geo_title": "#### 🔄 形状变化",
+        "geo_desc": "形状变化使用直线动作（矩阵）改变点位置、大小和方向。",
+        "btn_translation": "↔️ 移动",
+        "btn_scaling": "📏 大小",
+        "btn_rotation": "🔄 旋转",
+        "btn_shearing": "📐 倾斜",
+        "btn_reflection": "🪞 镜像",
+        "geo_info": "🔔 请先添加图片以尝试变化。",
+        "trans_settings": "**↔️ 移动设置**",
+        "trans_dx": "dx（侧面移动）",
+        "trans_dy": "dy（上下移动）",
+        "btn_apply": "使用",
+        "trans_result": "移动结果",
+        "scale_settings": "**📏 大小设置**",
+        "scale_x": "大小 X",
+        "scale_y": "大小 Y",
+        "scale_result": "大小结果",
+        "rot_settings": "**🔄 旋转设置**",
+        "rot_angle": "旋转角度（度）",
+        "rot_result": "旋转结果",
+        "shear_settings": "**📐 倾斜设置**",
+        "shear_x": "倾斜因子 X",
+        "shear_y": "倾斜因子 Y",
+        "shear_result": "倾斜结果",
+        "refl_settings": "**🪞 镜像设置**",
+        "refl_axis": "镜像线",
+        "refl_result": "镜像结果",
+        "hist_title": "#### 📈 图片图表",
+        "hist_desc": "图表显示点强度的分布（暗–亮），有助于检查光线和阴影。",
+        "btn_histogram": "显示图表 📈",
+        "hist_warning": "请先添加图片以显示图表。",
+        "filter_title": "#### 🔧 图片调整",
+        "filter_desc": "调整基于邻居（混合）改变点值以进行平滑、聚焦、轮廓查找、背景移除等。",
+        "btn_blur": "🔲 平滑",
+        "btn_sharpen": "✨ 聚焦",
+        "btn_background": "🎯 背景",
+        "btn_grayscale": "⚫ 单色",
+        "btn_edge": "🔍 轮廓",
+        "btn_brightness": "☀️ 光线",
+        "filter_info": "🔔 请先添加图片以使用调整。",
+        "blur_settings": "**🔲 平滑调整设置**",
+        "blur_kernel": "网格大小",
+        "blur_result": "平滑结果",
+        "sharpen_settings": "**✨ 聚焦调整设置**",
+        "sharpen_desc": "提升图片中的细节和轮廓。",
+        "sharpen_result": "聚焦结果",
+        "bg_settings": "**🎯 背景移除设置**",
+        "bg_method": "方式（演示目前仅使用HSV）",
+        "bg_result": "背景移除结果",
+        "gray_settings": "**⚫ 单色变化设置**",
+        "gray_desc": "将图片转为单色（黑白）。",
+        "gray_result": "单色结果",
+        "edge_settings": "**🔍 轮廓查找设置**",
+        "edge_method": "轮廓方式",
+        "edge_result": "轮廓图片",
+        "bright_settings": "**☀️ 光线和阴影设置**",
+        "bright_brightness": "光线",
+        "bright_contrast": "阴影",
+        "bright_result": "光线/阴影结果",
+        "team_title": "### 👥 组员",
+        "team_subtitle": "第12组 – 人员和职务",
+        "team_sid": "ID",
+        "team_role": "职务",
+        "team_group": "组",
+        "team_contribution": "帮助：",
+        "axis_x": "X线",
+        "axis_y": "Y线",
+        "axis_diag": "交叉",
+        "dark_mode": "夜间风格",
+        "light_mode": "白天风格",
     }
 }
 
-# ===================== HEADER WITH TOGGLES =====================
+# ===================== HEADER =====================
 
-# Get current language and theme
 lang = st.session_state["language"]
 t = translations[lang]
-theme_mode = st.session_state["theme_mode"]
 
 with st.container(border=True):
-    # Title dan controls dalam 3 kolom sejajar
-    header_col1, header_col2, header_col3 = st.columns([6, 1, 1], vertical_alignment="center")
-
+    header_col1, header_col2 = st.columns([6, 4], vertical_alignment="center")
     with header_col1:
         st.title(t["title"])
-
     with header_col2:
-        # Language toggle - shows opposite language
-        lang_button_text = "🇬🇧 EN" if lang == "id" else "🇮🇩 ID"
-        if st.button(lang_button_text, key="lang_toggle", use_container_width=True):
-            st.session_state["language"] = "en" if lang == "id" else "id"
-            st.rerun()
-
-    with header_col3:
-        # Theme toggle - shows opposite mode icon
-        theme_button_text = "🌙 Dark" if theme_mode == "light" else "☀️ Light"
-        if st.button(theme_button_text, key="theme_toggle", use_container_width=True):
-            st.session_state["theme_mode"] = "dark" if theme_mode == "light" else "light"
-            st.rerun()
+        lang_col1, lang_col2, lang_col3 = st.columns(3)
+        with lang_col1:
+            if st.button("🇮🇩 ID", key="lang_id", use_container_width=True):
+                st.session_state["language"] = "id"
+                st.rerun()
+        with lang_col2:
+            if st.button("🇬🇧 EN", key="lang_en", use_container_width=True):
+                st.session_state["language"] = "en"
+                st.rerun()
+        with lang_col3:
+            if st.button("🇨🇳 CN", key="lang_cn", use_container_width=True):
+                st.session_state["language"] = "zh"
+                st.rerun()
 
 st.subheader(t["subtitle"])
 
-# ----- Global layout + theme CSS -----
-
+# ----- Global layout + theme CSS (light only) -----
 base_css = """
 <style>
 .block-container {
@@ -325,7 +414,7 @@ div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] > div[da
 .team-photo-container {
     width: 140px;
     height: 140px;
-    border-radius: 12px;
+    border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
     display: flex;
@@ -342,7 +431,6 @@ div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] > div[da
 }
 </style>
 """
-
 light_css = """
 <style>
 .stMarkdown, .stMarkdown p, .stMarkdown li {
@@ -364,60 +452,29 @@ button[kind="secondary"]:hover {
 }
 </style>
 """
-
-dark_css = """
-<style>
-.stMarkdown, .stMarkdown p, .stMarkdown li {
-    color: #c8e6c9 !important;
-}
-div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlockBorderWrapper"] {
-    background-color: rgba(27, 58, 27, 0.3) !important;
-}
-button[kind="secondary"] {
-    background-color: #1e3a1e !important;
-    color: #c8e6c9 !important;
-    border: 2px solid #66bb6a !important;
-    font-weight: 600 !important;
-}
-button[kind="secondary"]:hover {
-    background-color: #2d5a2d !important;
-    border-color: #81c784 !important;
-}
-.team-photo-container {
-    background: #1e3a1e;
-    border-color: #66bb6a;
-}
-</style>
-"""
 st.markdown(base_css, unsafe_allow_html=True)
-if theme_mode == "light":
-    st.markdown(light_css, unsafe_allow_html=True)
-else:
-    st.markdown(dark_css, unsafe_allow_html=True)
+st.markdown(light_css, unsafe_allow_html=True)  # hanya light mode [file:2]
 
-# ===================== APP GOAL =====================
+# ===================== APP GOAL AND CONCEPTS =====================
 
-with st.container(border=True):
-    st.markdown(t["app_goal"])
-    st.markdown(t["features"])
+col_left, col_right = st.columns(2, vertical_alignment="top")
 
-# ===================== THREE CONCEPT BOXES =====================
+with col_left:
+    with st.container(border=True):
+        st.markdown(t["app_goal"])
+        st.markdown(t["features"])
 
-col1, col2, col3 = st.columns(3, vertical_alignment="top")
-
-with col1:
+with col_right:
     with st.container(border=True):
         st.markdown(t["concept_1_title"])
         st.markdown(t["concept_1_text1"])
         st.markdown(t["concept_1_text2"])
 
-with col2:
     with st.container(border=True):
         st.markdown(t["concept_2_title"])
         st.markdown(t["concept_2_text1"])
         st.markdown(t["concept_2_text2"])
 
-with col3:
     with st.container(border=True):
         st.markdown(t["concept_3_title"])
         st.markdown(t["concept_3_text1"])
@@ -441,12 +498,10 @@ def apply_affine_transform(img_rgb, M, output_size=None):
     h, w = img_bgr.shape[:2]
     if output_size is None:
         output_size = (w, h)
-
     if M.shape == (3, 3):
         M_affine = M[0:2, :]
     else:
         M_affine = M
-
     transformed = cv2.warpAffine(
         img_bgr, M_affine, output_size,
         flags=cv2.INTER_LINEAR,
@@ -481,25 +536,13 @@ def adjust_brightness_contrast(img_rgb, brightness=0, contrast=0):
     return to_streamlit(adjusted)
 
 def image_to_bytes(img_rgb, fmt="PNG"):
-    """
-    Convert numpy image (RGB, RGBA, or grayscale) to bytes for download.
-
-    - PNG: simpan apa adanya (termasuk alpha/transparan).
-    - JPEG: otomatis buang alpha (RGBA -> RGB) agar tidak error.
-    """
     if img_rgb is None:
         raise ValueError("image_to_bytes received None image")
-
     arr = np.array(img_rgb)
-
-    # Grayscale -> RGB
     if arr.ndim == 2:
         arr = cv2.cvtColor(arr, cv2.COLOR_GRAY2RGB)
-
-    # JPEG tidak mendukung alpha channel
     if fmt.upper() == "JPEG" and arr.ndim == 3 and arr.shape[2] == 4:
         arr = arr[:, :, :3]
-
     pil_img = Image.fromarray(arr.astype("uint8"))
     buf = BytesIO()
     pil_img.save(buf, format=fmt)
@@ -844,13 +887,14 @@ def create_square_image_html(image_path, size=140):
     </div>
     """
 
+# ===================== TEAM PHOTO HELPERS =====================
+
 def safe_display_square_image(path):
-    """Display image in square format with proper cropping"""
     if os.path.exists(path):
         try:
             img = Image.open(path)
-            if img.mode != 'RGB':
-                img = img.convert('RGB')
+            if img.mode != "RGB":
+                img = img.convert("RGB")
             width, height = img.size
             min_dim = min(width, height)
             left = (width - min_dim) // 2
@@ -860,26 +904,31 @@ def safe_display_square_image(path):
             img_cropped = img.crop((left, top, right, bottom))
             img_resized = img_cropped.resize((140, 140), Image.Resampling.LANCZOS)
 
-            import base64
             buffered = BytesIO()
             img_resized.save(buffered, format="JPEG")
             img_str = base64.b64encode(buffered.getvalue()).decode()
 
-            st.markdown(f"""
-            <div class="team-photo-container">
-                <img src="data:image/jpeg;base64,{img_str}" alt="Team member"/>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div class="team-photo-container">
+                    <img src="data:image/jpeg;base64,{img_str}" alt="Team member"/>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
         except Exception as e:
             st.error(f"Error loading image: {e}")
     else:
-        st.markdown("""
-        <div class="team-photo-container">
-            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#ddd; color:#666;">
-                No Image
+        st.markdown(
+            """
+            <div class="team-photo-container">
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#ddd; color:#666;">
+                    No Image
+                </div>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True,
+        )
 
 # Ensure images folder and placeholders exist
 images_dir = "images"
@@ -908,18 +957,13 @@ with st.container(border=True):
     uploaded_file = st.file_uploader(
         label=t["upload_label"],
         type=["png", "jpg", "jpeg"],
-        key="image_uploader"
+        key="image_uploader",
     )
-
     if uploaded_file is not None:
         original_img = load_image(uploaded_file)
         st.session_state.original_img = original_img
         st.success(t["upload_success"])
-        st.image(
-            original_img,
-            caption=t["upload_preview"],
-            use_column_width=True
-        )
+        st.image(original_img, caption=t["upload_preview"], use_column_width=True)
     else:
         st.info(t["upload_info"])
 
@@ -930,10 +974,12 @@ original_img = st.session_state.original_img
 st.markdown(t["tools_title"])
 st.write(t["tools_subtitle"])
 
-tools_col_left, tools_col_right = st.columns(2, vertical_alignment="top")
+tools_col_left, tools_col_right = st.columns(2, vertical_alignment="top")  # PENTING [file:2]
 
 # ==================== LEFT: GEOMETRIC TRANSFORMATIONS ====================
+
 with tools_col_left:
+    # Box 1: judul + tombol
     with st.container(border=True):
         st.markdown(t["geo_title"])
         st.write(t["geo_desc"])
@@ -958,7 +1004,8 @@ with tools_col_left:
             if st.button(t["btn_reflection"], key="btn_refl_click", type="secondary"):
                 st.session_state["geo_transform"] = "reflection"
 
-        # Transform parameter panel
+    # Box 2: panel parameter (dipindah ke bawah)
+    with st.container(border=True):
         if original_img is None:
             st.info(t["geo_info"])
         else:
@@ -972,7 +1019,6 @@ with tools_col_left:
                                   [0, 0, 1]], dtype=np.float32)
                     translated_img = apply_affine_transform(original_img, T)
                     st.image(translated_img, caption=t["trans_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -980,7 +1026,7 @@ with tools_col_left:
                             data=image_to_bytes(translated_img, fmt="PNG"),
                             file_name="translation_result.png",
                             mime="image/png",
-                            key="dl_trans_png"
+                            key="dl_trans_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -988,7 +1034,7 @@ with tools_col_left:
                             data=image_to_bytes(translated_img, fmt="JPEG"),
                             file_name="translation_result.jpg",
                             mime="image/jpeg",
-                            key="dl_trans_jpg"
+                            key="dl_trans_jpg",
                         )
 
             elif st.session_state["geo_transform"] == "scaling":
@@ -1004,7 +1050,6 @@ with tools_col_left:
                     new_h = int(h * sy)
                     scaled_img = apply_affine_transform(original_img, S, output_size=(new_w, new_h))
                     st.image(scaled_img, caption=t["scale_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1012,7 +1057,7 @@ with tools_col_left:
                             data=image_to_bytes(scaled_img, fmt="PNG"),
                             file_name="scaling_result.png",
                             mime="image/png",
-                            key="dl_scale_png"
+                            key="dl_scale_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1020,7 +1065,7 @@ with tools_col_left:
                             data=image_to_bytes(scaled_img, fmt="JPEG"),
                             file_name="scaling_result.jpg",
                             mime="image/jpeg",
-                            key="dl_scale_jpg"
+                            key="dl_scale_jpg",
                         )
 
             elif st.session_state["geo_transform"] == "rotation":
@@ -1044,7 +1089,6 @@ with tools_col_left:
                     M = T2 @ R @ T1
                     rotated_img = apply_affine_transform(original_img, M)
                     st.image(rotated_img, caption=t["rot_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1052,7 +1096,7 @@ with tools_col_left:
                             data=image_to_bytes(rotated_img, fmt="PNG"),
                             file_name="rotation_result.png",
                             mime="image/png",
-                            key="dl_rot_png"
+                            key="dl_rot_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1060,7 +1104,7 @@ with tools_col_left:
                             data=image_to_bytes(rotated_img, fmt="JPEG"),
                             file_name="rotation_result.jpg",
                             mime="image/jpeg",
-                            key="dl_rot_jpg"
+                            key="dl_rot_jpg",
                         )
 
             elif st.session_state["geo_transform"] == "shearing":
@@ -1073,7 +1117,6 @@ with tools_col_left:
                                    [0,       0,      1]], dtype=np.float32)
                     sheared_img = apply_affine_transform(original_img, Sh)
                     st.image(sheared_img, caption=t["shear_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1081,7 +1124,7 @@ with tools_col_left:
                             data=image_to_bytes(sheared_img, fmt="PNG"),
                             file_name="shearing_result.png",
                             mime="image/png",
-                            key="dl_shear_png"
+                            key="dl_shear_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1089,12 +1132,16 @@ with tools_col_left:
                             data=image_to_bytes(sheared_img, fmt="JPEG"),
                             file_name="shearing_result.jpg",
                             mime="image/jpeg",
-                            key="dl_shear_jpg"
+                            key="dl_shear_jpg",
                         )
 
             elif st.session_state["geo_transform"] == "reflection":
                 st.markdown(t["refl_settings"])
-                axis = st.selectbox(t["refl_axis"], [t["axis_x"], t["axis_y"], t["axis_diag"]], key="refl_axis")
+                axis = st.selectbox(
+                    t["refl_axis"],
+                    [t["axis_x"], t["axis_y"], t["axis_diag"]],
+                    key="refl_axis",
+                )
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_refl", type="primary"):
                     h, w = original_img.shape[:2]
                     if axis == t["axis_x"]:
@@ -1111,7 +1158,6 @@ with tools_col_left:
                                        [0, 0, 1]], dtype=np.float32)
                     reflected_img = apply_affine_transform(original_img, Rf)
                     st.image(reflected_img, caption=t["refl_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1119,7 +1165,7 @@ with tools_col_left:
                             data=image_to_bytes(reflected_img, fmt="PNG"),
                             file_name="reflection_result.png",
                             mime="image/png",
-                            key="dl_refl_png"
+                            key="dl_refl_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1127,7 +1173,7 @@ with tools_col_left:
                             data=image_to_bytes(reflected_img, fmt="JPEG"),
                             file_name="reflection_result.jpg",
                             mime="image/jpeg",
-                            key="dl_refl_jpg"
+                            key="dl_refl_jpg",
                         )
 
     # Histogram box
@@ -1142,6 +1188,8 @@ with tools_col_left:
                 plt.close(hist_fig)
             else:
                 st.warning(t["hist_warning"])
+
+# ==================== RIGHT: IMAGE FILTERING ====================
 
 with tools_col_right:
     with st.container(border=True):
@@ -1172,19 +1220,19 @@ with tools_col_right:
             if st.button(t["btn_brightness"], key="btn_bright_click", type="secondary"):
                 st.session_state["image_filter"] = "brightness"
 
+    # Box parameter filter di bawah tombol
+    with st.container(border=True):
         if original_img is None:
             st.info(t["filter_info"])
         else:
-            # ===================== RIGHT IMAGE FILTERING =====================
-
-            # ---- BLUR ----
+            # BLUR
             if st.session_state["image_filter"] == "blur":
                 st.markdown(t["blur_settings"])
                 kernel_size = st.selectbox(
                     t["blur_kernel"],
                     [3, 5, 7],
                     index=0,
-                    key="blur_kernel_size"
+                    key="blur_kernel_size",
                 )
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_blur", type="primary"):
                     gray = rgb_to_gray(original_img)
@@ -1192,9 +1240,7 @@ with tools_col_right:
                     blur_kernel = np.ones((k, k), dtype=np.float32) / (k * k)
                     blurred_gray = manual_convolution_gray(gray, blur_kernel)
                     blurred_rgb = cv2.cvtColor(blurred_gray, cv2.COLOR_GRAY2RGB)
-
                     st.image(blurred_rgb, caption=t["blur_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1202,7 +1248,7 @@ with tools_col_right:
                             data=image_to_bytes(blurred_rgb, fmt="PNG"),
                             file_name="blur_result.png",
                             mime="image/png",
-                            key="dl_blur_png"
+                            key="dl_blur_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1210,10 +1256,10 @@ with tools_col_right:
                             data=image_to_bytes(blurred_rgb, fmt="JPEG"),
                             file_name="blur_result.jpg",
                             mime="image/jpeg",
-                            key="dl_blur_jpg"
+                            key="dl_blur_jpg",
                         )
 
-            # ---- SHARPEN ----
+            # SHARPEN
             elif st.session_state["image_filter"] == "sharpen":
                 st.markdown(t["sharpen_settings"])
                 st.write(t["sharpen_desc"])
@@ -1223,13 +1269,11 @@ with tools_col_right:
                         [[0, -1, 0],
                          [-1, 5, -1],
                          [0, -1, 0]],
-                        dtype=np.float32
+                        dtype=np.float32,
                     )
                     sharpened_gray = manual_convolution_gray(gray, sharpen_kernel)
                     sharpened_rgb = cv2.cvtColor(sharpened_gray, cv2.COLOR_GRAY2RGB)
-
                     st.image(sharpened_rgb, caption=t["sharpen_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1237,7 +1281,7 @@ with tools_col_right:
                             data=image_to_bytes(sharpened_rgb, fmt="PNG"),
                             file_name="sharpen_result.png",
                             mime="image/png",
-                            key="dl_sharp_png"
+                            key="dl_sharp_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1245,10 +1289,10 @@ with tools_col_right:
                             data=image_to_bytes(sharpened_rgb, fmt="JPEG"),
                             file_name="sharpen_result.jpg",
                             mime="image/jpeg",
-                            key="dl_sharp_jpg"
+                            key="dl_sharp_jpg",
                         )
 
-            # ---- BACKGROUND REMOVAL / REPLACE ----
+            # BACKGROUND
             elif st.session_state["image_filter"] == "background":
                 st.markdown(t["bg_settings"])
                 method = st.selectbox(
@@ -1256,20 +1300,18 @@ with tools_col_right:
                     [
                         "HSV Color Thresholding",
                         "Blur Background",
-                        "Remove Background (Transparent)",
+                        "Remove Background Transparent",
                         "Solid Red Background",
                         "Solid Blue Background",
                         "Solid Yellow Background",
                         "Solid Green Background",
                         "Solid Brown Background",
                     ],
-                    key="bg_method"
+                    key="bg_method",
                 )
-
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_bg", type="primary"):
                     bg_removed_img = None
                     output_for_download = None
-
                     try:
                         if method == "HSV Color Thresholding":
                             bg_removed_img = simple_background_removal_hsv(original_img)
@@ -1278,7 +1320,7 @@ with tools_col_right:
                             if method == "Blur Background":
                                 output_mode = "blurred"
                                 solid_color = None
-                            elif method == "Remove Background (Transparent)":
+                            elif method == "Remove Background Transparent":
                                 output_mode = "transparent"
                                 solid_color = None
                             elif method == "Solid Red Background":
@@ -1308,14 +1350,11 @@ with tools_col_right:
                                 feather_radius=3,
                                 refine_hair=True,
                             )
-
                             bg_removed_img = result
-
                             if result.ndim == 3 and result.shape[2] == 4:
                                 output_for_download = result[:, :, :3]
                             else:
                                 output_for_download = result
-
                     except Exception as e:
                         st.error(f"Error saat memproses background: {e}")
                         bg_removed_img = None
@@ -1323,38 +1362,32 @@ with tools_col_right:
 
                     if bg_removed_img is not None:
                         st.image(bg_removed_img, caption=t["bg_result"], use_column_width=True)
-
                         col_png, col_jpg = st.columns(2)
                         with col_png:
                             st.download_button(
                                 label="⬇️ Download PNG",
-                                data=image_to_bytes(bg_removed_img, fmt="PNG"),
+                                data=image_to_bytes(output_for_download, fmt="PNG"),
                                 file_name="background_result.png",
                                 mime="image/png",
-                                key="dl_bg_png"
+                                key="dl_bg_png",
                             )
                         with col_jpg:
-                            if output_for_download is not None:
-                                st.download_button(
-                                    label="⬇️ Download JPG",
-                                    data=image_to_bytes(output_for_download, fmt="JPEG"),
-                                    file_name="background_result.jpg",
-                                    mime="image/jpeg",
-                                    key="dl_bg_jpg"
-                                )
-                    else:
-                        st.warning("Gagal menghasilkan gambar background. Coba metode lain atau gambar lain.")
+                            st.download_button(
+                                label="⬇️ Download JPG",
+                                data=image_to_bytes(output_for_download, fmt="JPEG"),
+                                file_name="background_result.jpg",
+                                mime="image/jpeg",
+                                key="dl_bg_jpg",
+                            )
 
-            # ---- GRAYSCALE ----
+            # GRAYSCALE
             elif st.session_state["image_filter"] == "grayscale":
                 st.markdown(t["gray_settings"])
                 st.write(t["gray_desc"])
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_gray", type="primary"):
                     gray_img = rgb_to_gray(original_img)
                     gray_rgb = cv2.cvtColor(gray_img, cv2.COLOR_GRAY2RGB)
-
                     st.image(gray_rgb, caption=t["gray_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1362,7 +1395,7 @@ with tools_col_right:
                             data=image_to_bytes(gray_rgb, fmt="PNG"),
                             file_name="grayscale_result.png",
                             mime="image/png",
-                            key="dl_gray_png"
+                            key="dl_gray_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1370,14 +1403,16 @@ with tools_col_right:
                             data=image_to_bytes(gray_rgb, fmt="JPEG"),
                             file_name="grayscale_result.jpg",
                             mime="image/jpeg",
-                            key="dl_gray_jpg"
+                            key="dl_gray_jpg",
                         )
 
-            # ---- EDGE DETECTION ----
+            # EDGE
             elif st.session_state["image_filter"] == "edge":
                 st.markdown(t["edge_settings"])
                 method_edge = st.selectbox(
-                    t["edge_method"], ["Sobel", "Canny"], key="edge_method"
+                    t["edge_method"],
+                    ["Sobel", "Canny"],
+                    key="edge_method",
                 )
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_edge", type="primary"):
                     img_bgr = to_opencv(original_img)
@@ -1392,9 +1427,7 @@ with tools_col_right:
                         edges = cv2.Canny(gray, 100, 200)
                         edge_bgr = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
                     edge_img = to_streamlit(edge_bgr)
-
                     st.image(edge_img, caption=f"{t['edge_result']} ({method_edge})", use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1402,7 +1435,7 @@ with tools_col_right:
                             data=image_to_bytes(edge_img, fmt="PNG"),
                             file_name="edge_result.png",
                             mime="image/png",
-                            key="dl_edge_png"
+                            key="dl_edge_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1410,19 +1443,17 @@ with tools_col_right:
                             data=image_to_bytes(edge_img, fmt="JPEG"),
                             file_name="edge_result.jpg",
                             mime="image/jpeg",
-                            key="dl_edge_jpg"
+                            key="dl_edge_jpg",
                         )
 
-            # ---- BRIGHTNESS / CONTRAST ----
+            # BRIGHTNESS / CONTRAST
             elif st.session_state["image_filter"] == "brightness":
                 st.markdown(t["bright_settings"])
                 brightness = st.slider(t["bright_brightness"], -100, 100, 0, key="brightness_value")
                 contrast = st.slider(t["bright_contrast"], -100, 100, 0, key="contrast_value")
                 if st.button(f"{t['btn_apply']} ✅", key="btn_apply_bright", type="primary"):
                     adjusted_img = adjust_brightness_contrast(original_img, brightness, contrast)
-
                     st.image(adjusted_img, caption=t["bright_result"], use_column_width=True)
-
                     col_png, col_jpg = st.columns(2)
                     with col_png:
                         st.download_button(
@@ -1430,7 +1461,7 @@ with tools_col_right:
                             data=image_to_bytes(adjusted_img, fmt="PNG"),
                             file_name="brightness_contrast_result.png",
                             mime="image/png",
-                            key="dl_bright_png"
+                            key="dl_bright_png",
                         )
                     with col_jpg:
                         st.download_button(
@@ -1438,7 +1469,7 @@ with tools_col_right:
                             data=image_to_bytes(adjusted_img, fmt="JPEG"),
                             file_name="brightness_contrast_result.jpg",
                             mime="image/jpeg",
-                            key="dl_bright_jpg"
+                            key="dl_bright_jpg",
                         )
 
 # ===================== TEAM MEMBERS =====================
@@ -1453,37 +1484,60 @@ members = [
     {"img": "images/yessa.jpg", "name": "Yessa Kireina Hanna Sevira", "sid": "004202400009", "role": "Member", "Contribution": "Histogram Module, Image Processing Functions"},
 ]
 
-cols_row1 = st.columns(2, vertical_alignment="top")
-for i in range(2):
+cols_row1 = st.columns(1, vertical_alignment="top")
+for i in range(1):
     with cols_row1[i]:
         with st.container(border=True):
             m = members[i]
-            col_img, col_info = st.columns([1, 2], vertical_alignment="center")
-            with col_img:
-                safe_display_square_image(m["img"])
-            with col_info:
-                st.markdown(f"**{m['name']}**")
-                st.markdown(f"{t['team_sid']} {m['sid']}")
-                st.markdown(f"{t['team_role']} {m['role']}")
-                st.markdown(f"{t['team_group']} 5")
-                st.markdown(f"{t['team_contribution']} {m['Contribution']}")
+            safe_display_square_image(m["img"])
+            # spasi vertikal kecil di bawah foto
+            st.markdown("<div style='height:8px;'></div>", unsafe_allow_html=True)
+            # teks di tengah
+            st.markdown(
+                f"<div style='text-align:center;'><strong>{m['name']}</strong></div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_sid']} {m['sid']}</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_role']} {m['role']}</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_group']} 12</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_contribution']} {m['Contribution']}</div>",
+                unsafe_allow_html=True,
+            )
 
-cols_row2 = st.columns(2, vertical_alignment="top")
-for i in range(2, 4):
-    with cols_row2[i - 2]:
+cols_row2 = st.columns(3, vertical_alignment="top")
+for i in range(1, 4):
+    with cols_row2[i - 1]:
         with st.container(border=True):
             m = members[i]
-            col_img, col_info = st.columns([1, 2], vertical_alignment="center")
-            with col_img:
-                safe_display_square_image(m["img"])
-            with col_info:
-                st.markdown(f"**{m['name']}**")
-                st.markdown(f"{t['team_sid']} {m['sid']}")
-                st.markdown(f"{t['team_role']} {m['role']}")
-                st.markdown(f"{t['team_group']} 5")
-                st.markdown(f"{t['team_contribution']} {m['Contribution']}")
-
-
-
-
-
+            safe_display_square_image(m["img"])
+            st.markdown("<div style='height:8px;'></div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='text-align:center;'><strong>{m['name']}</strong></div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_sid']} {m['sid']}</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_role']} {m['role']}</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_group']} 12</div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<div style='text-align:center;'>{t['team_contribution']} {m['Contribution']}</div>",
+                unsafe_allow_html=True,
+            )
