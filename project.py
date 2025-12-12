@@ -1,3 +1,4 @@
+
 import streamlit as st
 import numpy as np
 import cv2
@@ -147,12 +148,12 @@ translations = {
         "bright_result": "Hasil Cahaya/Bayangan",
         "team_title": "### 👥 Orang Kelompok",
         "team_subtitle": "Kelompok 12 – Orang dan Tugas",
-        "team_sid": "ID",
-        "team_role": "Tugas",
+        "team_sid": "ID:",
+        "team_role": "Tugas:",
         "team_contribution": "Kontribusi:",
-        "upload_method_title": "### Cara Penguploadan",
-        "upload_method_text": "Untuk menggunakan aplikasi ini, klik tombol 'Tambah foto' dan pilih file gambar PNG, JPG, atau JPEG dari perangkat Anda. Gambar akan ditampilkan setelah diupload.",
-        "team_group": "Kelompok",
+        "upload_method_title": "### Cara Penguploadan Foto",
+        "upload_method_text": "**Langkah-langkah untuk mengupload foto:**\n1. Klik tombol **\"Tambah foto di sini (PNG/JPG/JPEG) 📂\"** yang terletak di bagian atas halaman.\n2. Pilih file gambar dari perangkat Anda (format yang didukung: PNG, JPG, atau JPEG).\n3. Tunggu hingga gambar berhasil diupload dan ditampilkan di layar.\n4. Jika berhasil, Anda akan melihat pesan konfirmasi dan preview gambar awal.\n5. Sekarang Anda dapat menggunakan alat editing di kolom kiri (transformasi geometris) dan kanan (penyesuaian gambar).",
+        "team_group": "Kelompok:",
         "axis_x": "Garis-X",
         "axis_y": "Garis-Y",
         "axis_diag": "Silang",
@@ -243,9 +244,11 @@ translations = {
         "bright_result": "Light/Shade Outcome",
         "team_title": "### 👥 Group People",
         "team_subtitle": "Group 12 – People and Jobs",
-        "team_sid": "ID",
-        "team_role": "Job",
-        "team_group": "Group",
+        "team_sid": "ID:",
+        "team_role": "Job:",
+        "upload_method_title": "### How to Upload Photo",
+        "upload_method_text": "**Steps to upload a photo:**\n1. Click the **\"Add a picture here (PNG/JPG/JPEG) 📂\"** button located at the top of the page.\n2. Select an image file from your device (supported formats: PNG, JPG, or JPEG).\n3. Wait until the image is successfully uploaded and displayed on the screen.\n4. If successful, you will see a confirmation message and a preview of the initial image.\n5. Now you can use the editing tools in the left column (geometric transformations) and right column (image adjustments).",
+        "team_group": "Group:",
         "team_contribution": "Contribution:",
         "axis_x": "X-line",
         "axis_y": "Y-line",
@@ -337,10 +340,12 @@ translations = {
         "bright_result": "光线/阴影结果",
         "team_title": "### 👥 组员",
         "team_subtitle": "第12组 – 人员和职务",
-        "team_sid": "ID",
-        "team_role": "职务",
-        "team_group": "组",
+        "team_sid": "ID:",
+        "team_role": "职务:",
+        "team_group": "组:",
         "team_contribution": "帮助：",
+        "upload_method_title": "### 如何上传照片",
+        "upload_method_text": "**上传照片的步骤：**\n1. 点击位于页面顶部的 **\"在此处添加图片（PNG/JPG/JPEG）📂\"** 按钮。\n2. 从您的设备中选择图像文件（支持的格式：PNG、JPG 或 JPEG）。\n3. 等待图像成功上传并显示在屏幕上。\n4. 如果成功，您将看到确认消息和初始图像的预览。\n5. 现在您可以使用左侧列（几何变换）和右侧列（图像调整）中的编辑工具。",
         "axis_x": "X线",
         "axis_y": "Y线",
         "axis_diag": "交叉",
@@ -457,28 +462,28 @@ st.markdown(light_css, unsafe_allow_html=True)  # hanya light mode [file:2]
 
 # ===================== APP GOAL AND CONCEPTS =====================
 
-col_left, col_right = st.columns(2, vertical_alignment="top")
+with st.container(border=True):
+    st.markdown(t["app_goal"])
+    st.markdown(t["features"])
 
-with col_left:
-    with st.container(border=True):
-        st.markdown(t["app_goal"])
-        st.markdown(t["features"])
+with st.container(border=True):
+    st.markdown(t["quick_concepts"])
+    st.markdown(t["quick_concepts_text"])
 
-with col_right:
-    with st.container(border=True):
-        st.markdown(t["concept_1_title"])
-        st.markdown(t["concept_1_text1"])
-        st.markdown(t["concept_1_text2"])
+with st.container(border=True):
+    st.markdown(t["concept_1_title"])
+    st.markdown(t["concept_1_text1"])
+    st.markdown(t["concept_1_text2"])
 
-    with st.container(border=True):
-        st.markdown(t["concept_2_title"])
-        st.markdown(t["concept_2_text1"])
-        st.markdown(t["concept_2_text2"])
+with st.container(border=True):
+    st.markdown(t["concept_2_title"])
+    st.markdown(t["concept_2_text1"])
+    st.markdown(t["concept_2_text2"])
 
-    with st.container(border=True):
-        st.markdown(t["concept_3_title"])
-        st.markdown(t["concept_3_text1"])
-        st.markdown(t["concept_3_text2"])
+with st.container(border=True):
+    st.markdown(t["concept_3_title"])
+    st.markdown(t["concept_3_text1"])
+    st.markdown(t["concept_3_text2"])
 
 # ===================== HELPER FUNCTIONS =====================
 
@@ -944,12 +949,6 @@ for p in placeholder_files:
         placeholder = Image.new("RGB", (400, 400), color=(200, 200, 200))
         placeholder.save(p, format="JPEG")
 
-# ===================== CONCEPTS SHORT REMINDER =====================
-
-with st.container(border=True):
-    st.markdown(t["quick_concepts"])
-    st.markdown(t["quick_concepts_text"])
-
 # ===================== UPLOAD IMAGE =====================
 
 with st.container(border=True):
@@ -968,6 +967,10 @@ with st.container(border=True):
         st.info(t["upload_info"])
 
 original_img = st.session_state.original_img
+
+with st.container(border=True):
+    st.markdown(t["upload_method_title"])
+    st.markdown(t["upload_method_text"])
 
 # ===================== TOOLS TITLE =====================
 
